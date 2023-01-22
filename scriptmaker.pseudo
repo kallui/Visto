@@ -1,0 +1,18 @@
+block_of_text
+
+lob = split block_of_text into meanignful blocks
+chars =[]
+
+
+for block in lob:
+    block.background = get_background(block)
+    block.dialogues = get_dialogues(block, chars)
+    chars = get_characters(block)
+    block.music = get_music(block)
+
+
+script = create_script_from_blocks(lob)
+characters = chars
+
+
+
