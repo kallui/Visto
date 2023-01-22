@@ -157,7 +157,7 @@ def extract_mood(raw_mood, script):
         if mood in simple_mood:
             script.append(('mood', mood))
             return script
-    script.append('mood', 'generic music')
+    script.append(('mood', 'generic music'))
     return script
 
 def generate_script_and_character_map(lob):

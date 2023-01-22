@@ -1,4 +1,5 @@
 import os
+import shutil 
 
 videoschema = [
     {
@@ -58,10 +59,11 @@ def main(videoschema):
         print(os.path.abspath(os.getcwd()))
         bg_path = get_bg(videoschema, i)
         bg_name = get_bg_name(bg_path)
-        os.rename(bg_path, f"assets/Visto/game/images/{bg_name}")
+        shutil.copyfile(bg_path, f"assets/Visto/game/images/{bg_name}")
+
         music_path = get_tone(videoschema, i)
         music_name = get_tone_name(music_path)
-        os.rename(music_path, f"assets/Visto/game/audio/{music_name}")
+        shutil.copyfile(music_path, f"assets/Visto/game/audio/{music_name}")
         characters = get_characters(videoschema, i)
 
         data += f'''     scene {bg_name.split('.')[0]}\n'''
@@ -104,11 +106,13 @@ def main(videoschema):
 
     return data
 
-def write_to_script():
+def write_to_script(videoschema, output_path):
     #f = open(f'{os.path.abspath(os.getcwd())}/script.rpy', "w")
     with open('assets/Visto/game/script.rpy', 'w') as the_file:
         the_file.write(main(videoschema))
+    shutil.make_archive('game', 'zip', 'assets')
+    return output_path
 
-write_to_script()
+
 
 #print(main(videoschema))
