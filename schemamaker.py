@@ -1,21 +1,19 @@
 import json
 from moodpicker import pick_mood
-
-def generate(prompt, itype):
-    return 'path/to/image'
+from imgen import generate_image
 
 def create_schema(script, character_map):
     schema = []
     lineSchema=None
     char_map_images = {}
     for char in character_map:
-        char_map_images[char] = generate(character_map[char], 'char')
+        char_map_images[char] = generate_image(character_map[char], 'char')
     for line in script:
         if line[0] == 'bg':
             if lineSchema is not None:
                 schema.append(lineSchema)
             lineSchema={'characters':[]}
-            lineSchema['bg'] = generate(line[1], 'bg')
+            lineSchema['bg'] = generate_image(line[1], 'bg')
         elif line[0] == 'mood':
             lineSchema['tone'] = pick_mood(line[1])
         elif line[0] == 'Narrator' or line[0] == 'narrator':
