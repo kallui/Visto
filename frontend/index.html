@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visto | Create</title>
+    <style>
+        .formui{
+            display: flex;
+            flex-direction: column;
+            width: 75%;
+            margin: 0 auto;
+        }
+        textarea {
+            height: 40vh;
+        }
+        body {
+            background-image: url("https://cdn.dribbble.com/users/644672/screenshots/8969358/media/1186a88454e2d267990d17d4fd53c089.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Visto</h1></center>
+    <div class="formui">
+        <input type="file" id="fileInput" name="filename">
+        <br />
+        <textarea type="text" id="dabox"></textarea>
+        <br />
+        <button id="sub" type="button">Yuko</button>
+        <center id="loadGif"><iframe src="https://giphy.com/embed/Jkk64Xj64mcfu" width="480" height="258" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div></center>
+        <br />
+        <center id="dwn"><a style="color:red;" href="path_to_file" download="proposed_file_name">the sauce (ichicban 辛い)</a></center>
+    </div>
+</body>
+<script>
+   const load = document.getElementById("loadGif");
+   const but = document.getElementById("sub");
+   const dwn = document.getElementById("dwn");
+   load.style.display="none";
+   dwn.style.display="none";
+
+   function check_done(id) {
+        fetch(`http://localhost:8000/is-it-done/${id}`, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(response => {
+        console.log(response.msg)
+        if (response.msg === "Hold on brother") {
+            setTimeout(() => check_done(id), 20000);
+        } else {
+            dwn.style.display="block"
+            load.style.display="none"
+            but.style.display="block"
+
+            // dwn.setAttribute('href', '')
+            // dwn.setAttribute('download', '')
+        }
+    })
+    .catch(error => console.log(error))
+    }
+
+   document.getElementById("sub").addEventListener("click", function(event){
+        load.style.display="block";
+        but.style.display="none";
+        dwn.style.display="none";
+        const content = document.getElementById("dabox").value;
+        if (content != "") {
+            (async () => {
+                const rawResponse = await fetch('http://127.0.0.1:8000/story-upload', {
+                    method: 'POST',
+                    headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({story: content})
+                });
+                const resp = await rawResponse.json();
+                check_done(resp.job)
+            })();
+        } else {
+            var fileInput = document.getElementById("fileInput");
+            var formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+            fetch("http://127.0.0.1:8000/story-file", {
+            method: "POST",
+            body: formData
+            })
+            .then(response => response.json())
+            .then(response =>{
+                check_done(response.job)
+            })
+            .catch(error => {console.error(error);});
+        }
+
+
+});
+</script>
+</html>

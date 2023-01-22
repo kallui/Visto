@@ -1,0 +1,26 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/andrecorreia/Desktop/happy/assets/renpy-8.0.3-sdk/launcher/game/saves/persistent.1674412596.tmp'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "/Users/andrecorreia/Desktop/happy/assets/renpy-8.0.3-sdk/renpy/bootstrap.py", line 277, in bootstrap
+    renpy.main.main()
+  File "/Users/andrecorreia/Desktop/happy/assets/renpy-8.0.3-sdk/renpy/main.py", line 663, in main
+    renpy.persistent.update(True)
+  File "/Users/andrecorreia/Desktop/happy/assets/renpy-8.0.3-sdk/renpy/persistent.py", line 397, in update
+    save()
+  File "/Users/andrecorreia/Desktop/happy/assets/renpy-8.0.3-sdk/renpy/persistent.py", line 413, in save
+    renpy.loadsave.location.save_persistent(data)
+  File "/Users/andrecorreia/Desktop/happy/assets/renpy-8.0.3-sdk/renpy/savelocation.py", line 494, in save_persistent
+    l.save_persistent(data)
+  File "/Users/andrecorreia/Desktop/happy/assets/renpy-8.0.3-sdk/renpy/savelocation.py", line 345, in save_persistent
+    with open(fn_tmp, "wb") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/andrecorreia/Desktop/happy/assets/renpy-8.0.3-sdk/launcher/game/saves/persistent.1674412596.tmp'
+
+macOS-10.16-x86_64-i386-64bit x86_64
+Ren'Py 8.0.3.22090809
+Ren'Py Launcher 8.0.3.22090809
+Sun Jan 22 10:40:59 2023
