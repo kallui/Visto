@@ -1,5 +1,9 @@
 MOOD_AUDIO_MAP ={
-    'happy music': ["moods_bg_music/happy/2017-04-14_-_Happy_Dreams_-_David_Fesliyan.mp3"],
+    'happy music': [
+        "moods_bg_music/happy/2017-04-14_-_Happy_Dreams_-_David_Fesliyan.mp3", 
+        "moods_bg_music/happy/Doki Doki Literature Club! OST - Okay, Everyone!.mp3",
+        "moods_bg_music/happy/Doki Doki Literature Club! OST - Dreams Of Love and Literature.mp3"
+    ],
     'suspenseful music': ["moods_bg_music/suspensful/2019-05-01_-_Undercover_Spy_Agent_-_David_Fesliyan.mp3"],
     'atmospheric music': ["moods_bg_music/atmospheric/Interstellar Main Theme - Extra Extended - Soundtrack by  Hans Zimmer.mp3"],
     'romantic music': ["moods_bg_music/romantic/Persona 5 OST 69 - Sweet.mp3"],
