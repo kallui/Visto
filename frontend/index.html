@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Visto | Create</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+
         .formui{
             display: flex;
             flex-direction: column;
@@ -14,25 +17,36 @@
         }
         textarea {
             height: 40vh;
+            opacity: 80%;
         }
         body {
-            background-image: url("https://cdn.dribbble.com/users/644672/screenshots/8969358/media/1186a88454e2d267990d17d4fd53c089.jpg");
+            background-image: url("https://cdn.discordapp.com/attachments/1037391472833593417/1066815339771461742/bookshelf-modified.jpeg");
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
+            font-family: Unbounded;
         }
     </style>
 </head>
 <body>
-    <center><h1>Visto</h1></center>
+    <center><h1 style="color: white; font-family: Unbounded; font-size: 70px; ">Visto</h1></center>
     <div class="formui">
-        <input type="file" id="fileInput" name="filename">
+        <div style="display: flex; justify-content: center; align-items: center; opacity: 80%; height: 50px">
+        <input style="display: flex; justify-content: center; align-items: center; border: 2px solid grey; border-radius: 3px; background-color: #e3ddd3" type="file" id="fileInput" name="filename">
+        </div>
         <br />
-        <textarea type="text" id="dabox"></textarea>
+        <textarea style ="background-color: #e3ddd3; border-radius: 10px; border: 3px solid grey" type="text" id="dabox"></textarea>
         <br />
-        <button id="sub" type="button">Yuko</button>
-        <center id="loadGif"><iframe src="https://giphy.com/embed/Jkk64Xj64mcfu" width="480" height="258" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div></center>
+        <div style="display: flex; justify-content: center;">
+
+            <button id="sub" style=" font-weight: 700; background-color: #e3ddd3; height: 50px; width: 30%; border-radius: 20px; border: 3px solid grey" type="button">
+                <div style="font-size: 30px; opacity: 100%; color: #524c41;">
+                    Create
+                </div>
+            </button>
+        </div>
+        <center id="loadGif"><iframe src="https://giphy.com/embed/wqzktGaaBDEF9TpCyK" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div></center>
         <br />
         <center id="dwn"><a style="color:red;" href="path_to_file" download="proposed_file_name">the sauce (ichicban 辛い)</a></center>
     </div>
