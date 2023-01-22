@@ -1,6 +1,8 @@
+import random
+
 MOOD_AUDIO_MAP ={
     'happy music': [
-        "moods_bg_music/happy/2017-04-14_-_Happy_Dreams_-_David_Fesliyan.mp3", 
+        "moods_bg_music/happy/2017-04-14_-_Happy_Dreams_-_David_Fesliyan.mp3",
         "moods_bg_music/happy/Doki Doki Literature Club! OST - Okay, Everyone!.mp3",
         "moods_bg_music/happy/Doki Doki Literature Club! OST - Dreams Of Love and Literature.mp3"
     ],
@@ -17,3 +19,14 @@ MOOD_AUDIO_MAP ={
     'tragic music': ["moods_bg_music/tragic/Alleycat - Persona 5.mp3"],
     'comedy music': ["moods_bg_music/comedy/2018-10-06_-_Silly_Chicken_-_David_Fesliyan.mp3"],
 }
+
+def pick_mood(mood):
+    return random.choice(MOOD_AUDIO_MAP[mood])
+
+if __name__ == "__main__":
+    print(pick_mood("tension music"))
+    print(pick_mood("happy music"))
+    print(pick_mood("happy music"))
+    print(pick_mood("happy music"))
+    print(pick_mood("tension music"))
+    print(pick_mood("tension music"))

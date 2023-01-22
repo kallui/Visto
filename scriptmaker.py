@@ -165,19 +165,24 @@ def generate_script_and_character_map(lob):
     character_map = {}
     character_list = []
     for block in lob:
+        # background
         raw_bg = generate_text(background_prompt(block))
         script.append(('bg', raw_bg.strip()))
+
+        #mood music
         raw_mood  = generate_text(mood_prompt(block))
         script = extract_mood(raw_mood, script)
 
+        # character_map
         raw_dialogues = generate_text(dialogue_prompt(block, character_list))
         character_list = list(set(extract_characters(raw_dialogues, character_list)))
         if "Narrator" in character_list:
             character_list.remove('Narrator')
-        # sets the character description of existsing characters to the very last description
+        # note:sets the character description of existsing characters to the very last description
         raw_character_description = generate_text(characters_prompt(block, list(character_list)))
         character_map = extract_characters_desc(raw_character_description, character_map)
 
+        # dialogues
         script = extract_script(raw_dialogues, script)
     return script, character_map
 
@@ -186,8 +191,12 @@ def generate_script_and_character_map(lob):
 
 if __name__ == "__main__":
     script, character_map = generate_script_and_character_map(lob)
-    for line in script:
-        print(line)
-    print("\n\n8=======================================3\n\n")
-    for line2 in character_map:
-        print(f"{line2} => {character_map[line2].strip()}")
+    print(script)
+    print(character_map)
+
+    #debug code:
+    # for line in script:
+    #     print(line)
+    # print("\n\n8=======================================3\n\n")
+    # for line2 in character_map:
+    #     print(f"{line2} => {character_map[line2].strip()}")
