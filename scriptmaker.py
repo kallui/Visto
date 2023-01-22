@@ -82,8 +82,14 @@ def dialogue_prompt(prompt, characters):
     extract the scene of the story as a dialogues of characters and narrator.
     """
 
-def background_prompt():
-    return ""
+def background_prompt(prompt):
+    return f"""
+    Story:
+
+    {prompt}
+
+    give a short physical description with no living beings of the general location of where the Story takes place
+    """
 
 # prompt: block of text, characters: ['mario', 'luigo', 'cassie']
 def characters_prompt(prompt, characters):
@@ -159,21 +165,20 @@ def generate_script_and_character_map(lob):
     character_map = {}
     character_list = []
     for block in lob:
+        raw_bg = generate_text(background_prompt(block))
+        script.append(('bg', raw_bg.strip()))
         raw_mood  = generate_text(mood_prompt(block))
         script = extract_mood(raw_mood, script)
 
-        # raw_dialogues = generate_text(dialogue_prompt(block, character_list))
+        raw_dialogues = generate_text(dialogue_prompt(block, character_list))
+        character_list = list(set(extract_characters(raw_dialogues, character_list)))
+        if "Narrator" in character_list:
+            character_list.remove('Narrator')
+        # sets the character description of existsing characters to the very last description
+        raw_character_description = generate_text(characters_prompt(block, list(character_list)))
+        character_map = extract_characters_desc(raw_character_description, character_map)
 
-        # character_list = list(set(extract_characters(raw_dialogues, character_list)))
-
-        # if "Narrator" in character_list:
-        #     character_list.remove('Narrator')
-
-        # # sets the character description of existsing characters to the very last description
-        # raw_character_description = generate_text(characters_prompt(block, list(character_list)))
-        # character_map = extract_characters_desc(raw_character_description, character_map)
-
-        # script = extract_script(raw_dialogues, script)
+        script = extract_script(raw_dialogues, script)
     return script, character_map
 
 
@@ -183,6 +188,6 @@ if __name__ == "__main__":
     script, character_map = generate_script_and_character_map(lob)
     for line in script:
         print(line)
-    # print("\n\n8=======================================3\n\n")
-    # for line2 in character_map:
-    #     print(f"{line2} => {character_map[line2]}")
+    print("\n\n8=======================================3\n\n")
+    for line2 in character_map:
+        print(f"{line2} => {character_map[line2].strip()}")
