@@ -56,7 +56,6 @@ def main(videoschema):
     data = '''label start:\n'''
 
     for i in range(len(videoschema)):
-        print(os.path.abspath(os.getcwd()))
         bg_path = get_bg(videoschema, i)
         bg_name = get_bg_name(bg_path)
         shutil.copyfile(bg_path, f"assets/Visto/game/images/{bg_name}")
@@ -66,17 +65,25 @@ def main(videoschema):
         shutil.copyfile(music_path, f"assets/Visto/game/audio/{music_name}")
         characters = get_characters(videoschema, i)
 
-        data += f'''     scene {bg_name.split('.')[0]}\n'''
+        data += f'''     scene {bg_name.split('.')[0]}:\n'''
+        data += f'''        xzoom 2.0\n'''
+        data += f'''        yzoom 1.5\n'''
         data += f'''     play music \"audio/{music_name}\"\n'''
 
         curr_chars = [] # keep track of who is in the scene so that we can hide later
                         # aiming to keep 2 chars in the scene per "round"
         for i in range(len(characters)):
-            char_name = characters[i]["name"]
-            char_dialog = characters[i]["dialogue"]
-            if(i == 0):
+            #get char image, name and dialog (free of quotation marks)
+            char_name = characters[i]["name"].replace('"', '')
+            char_dialog = characters[i]["dialogue"].replace('"', '')
+            if(char_name == "Narrator"):
+                data += f'''     \"{char_dialog}\"\n'''
+                continue
+            shutil.copyfile(characters[i]["image"], f"assets/Visto/game/images/{char_name}.png")
+            
+            if(len(curr_chars) == 0):
                 curr_chars.append(char_name)
-            if(i == 1):
+            if(len(curr_chars) == 1):
                 curr_chars.append(char_name)
                     
             if(i % 2 == 0):
@@ -110,7 +117,7 @@ def write_to_script(videoschema, output_path):
     #f = open(f'{os.path.abspath(os.getcwd())}/script.rpy', "w")
     with open('assets/Visto/game/script.rpy', 'w') as the_file:
         the_file.write(main(videoschema))
-    shutil.make_archive('game', 'zip', 'assets')
+    shutil.make_archive(output_path+"/game", 'zip', 'assets')
     return output_path
 
 
