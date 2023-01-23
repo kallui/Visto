@@ -79,7 +79,8 @@ def main(videoschema):
             if(char_name == "Narrator"):
                 data += f'''     \"{char_dialog}\"\n'''
                 continue
-            shutil.copyfile(characters[i]["image"], f"assets/Visto/game/images/{char_name}.png")
+            file = characters[i]["image"].split("/")[-1]
+            shutil.copyfile(characters[i]["image"], f"assets/Visto/game/images/{file}")
             
             if(len(curr_chars) == 0):
                 curr_chars.append(char_name)
@@ -91,13 +92,13 @@ def main(videoschema):
                     if(char_name not in curr_chars):
                         data += f'''     hide {curr_chars[0]}\n'''
                         curr_chars[0] = char_name
-                data += f'''     show {char_name} at left\n'''
+                data += f'''     show {characters[i]["image"].split('/')[-1].split('.')[0]} at left\n'''
             else:
                 if(len(curr_chars) == 2):
                     if(char_name not in curr_chars):
                         data += f'''     hide {curr_chars[1]}\n'''
                         curr_chars[1] = char_name
-                data += f'''     show {char_name} at right\n'''
+                data += f'''     show {characters[i]["image"].split('/')[-1].split('.')[0]} at right\n'''
             
             data += f'''     \"{char_name}\" \"{char_dialog}\"\n'''
         
