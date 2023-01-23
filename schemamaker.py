@@ -16,7 +16,7 @@ def create_schema(script, character_map):
             lineSchema['bg'] = generate_image(line[1], 'bg')
         elif line[0] == 'mood':
             lineSchema['tone'] = pick_mood(line[1])
-        elif line[0] == 'Narrator' or line[0] == 'narrator':
+        elif line[0].strip() == 'Narrator' or line[0].strip() == 'narrator':
             lineSchema['characters'].append({
                 "name": 'Narrator',
                 "dialogue": line[1]
@@ -26,7 +26,7 @@ def create_schema(script, character_map):
             lineSchema['characters'].append({
                 "name": line[0],
                 "dialogue": line[1],
-                "image": char_map_images[char]
+                "image": char_map_images[line[0].strip()]
             })
     schema.append(lineSchema)
     return schema

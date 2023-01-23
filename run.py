@@ -60,5 +60,6 @@ her two pointy shoes inside! So now, whenever the Big Bad Wolf feels hungry, tho
 if __name__ == "__main__":
     script, character_map = generate_script_and_character_map(lob)
     schema = create_schema(script, character_map)
-    write_to_script(schema, "jobs/test")
+    print(schema)
+    # write_to_script(schema, "jobs/test")
 
