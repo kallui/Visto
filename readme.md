@@ -1,11 +1,15 @@
-# Visto, Automatic visual storytelling
+# Visto: Elevating Stories through Visual Alchemy
 
-## Participated in a hackathon with a team of four and developed Visto, a tool that converts written stories into engaging visual experiences while preserving the essence of the original content
+Welcome to Visto, an innovative tool born out of the collaborative spirit of a four-member team during a captivating hackathon. Our mission? To breathe life into written tales by seamlessly transforming them into captivating visual experiences, all while preserving the soul of the original narrative.
 
-## Utilized GPT-3 to extract essential story elements such as characters, physical descriptions, dialogues, and scene moods from PDF or raw text inputs
+## Key Features
 
-## Generated custom artwork for each character image and scene background using Stable Diffusion AI, incorporating Studio Ghibli's distinctive style
+- **GPT-3 Integration:** Visto harnesses the power of GPT-3 to deftly extract vital story elements—characters, physical descriptions, dialogues, and scene moods—from both PDF and raw text inputs. This enables a rich understanding of the narrative landscape, setting the stage for the visual enchantment that follows.
 
-## Incorporated diverse background music tailored to the mood of each scene, creating an immersive experience (e.g., upbeat music for happy scenes)
+- **Artistic Alchemy with Stable Diffusion AI:** Witness the magic as Visto employs Stable Diffusion AI to craft bespoke artwork for each character and scene background. Drawing inspiration from the enchanting style of Studio Ghibli, our tool weaves a visual tapestry that seamlessly blends technology with artistic finesse.
 
-## Utilized the Ren'Py python library to transform the extracted story data into a visually stunning and interactive visual novel game
+## Bringing Stories to Life
+
+- **Visual Novel Transformation:** Utilizing the Ren'Py Python library, Visto takes the extracted story elements and breathes life into them, molding them into visually stunning and interactive visual novel games. Immerse yourself in a world where narratives transcend the confines of text, inviting you to explore and experience stories in an entirely new dimension.
+
+Visto is more than just a tool; it's a testament to the fusion of cutting-edge technology and the timeless art of storytelling. Join us on this journey as we reimagine narratives, transcending traditional boundaries and ushering in a new era of visual storytelling.
