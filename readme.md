@@ -21,6 +21,8 @@ Visto is a powerful tool developed during a hackathon that transforms written st
 
 ## Preview: Red Riding Hood Novel 
 
+https://americanliterature.com/childrens-stories/little-red-riding-hood
+
 <img width="1278" alt="image" src="https://github.com/kallui/Visto/assets/90471072/a49dac6d-acaa-48da-9fe4-47f305c9c98b">
 <img width="1278" alt="image" src="https://github.com/kallui/Visto/assets/90471072/d9a5cc99-eae5-4e53-bd66-615619a6eb6d">
 <img width="1278" alt="image" src="https://github.com/kallui/Visto/assets/90471072/f0f4ea59-946b-435b-b7b0-ecbad873641a">
